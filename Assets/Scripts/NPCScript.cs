@@ -107,7 +107,7 @@ public class NPCScript : MonoBehaviour
 
     private void OnCollisionStay(Collision collision)
     {
-        Debug.Log("Colliding with Player" + collision.gameObject.name) ;
+        Debug.Log("Colliding with Player" + collision.gameObject.name);
         if (collision.collider.tag == "Player")
         {
             touching = true;
@@ -121,4 +121,20 @@ public class NPCScript : MonoBehaviour
         clickText.enabled = false;
         clickBox.enabled = false;
     }
+
+    //private void OnTriggerStay(Collider other)
+    //{
+    //    if(other.tag == "Player")
+    //    {
+    //        touching = true;
+    //    }
+    //}
+
+    //private void OnTriggerExit(Collider other)
+    //{
+    //    Debug.Log("Player Left NPC");
+    //    touching = false;
+    //    clickText.enabled = false;
+    //    clickBox.enabled = false;
+    //}
 }
