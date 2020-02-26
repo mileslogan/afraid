@@ -105,36 +105,36 @@ public class NPCScript : MonoBehaviour
         
     }
 
-    private void OnCollisionStay(Collision collision)
-    {
-        Debug.Log("Colliding with Player" + collision.gameObject.name);
-        if (collision.collider.tag == "Player")
-        {
-            touching = true;
-        }
-    }
-
-    private void OnCollisionExit(Collision collision)
-    {
-        Debug.Log("Player Left NPC");
-        touching = false;
-        clickText.enabled = false;
-        clickBox.enabled = false;
-    }
-
-    //private void OnTriggerStay(Collider other)
+    //private void OnCollisionStay(Collision collision)
     //{
-    //    if(other.tag == "Player")
+    //    Debug.Log("Colliding with Player" + collision.gameObject.name);
+    //    if (collision.collider.tag == "Player")
     //    {
     //        touching = true;
     //    }
     //}
 
-    //private void OnTriggerExit(Collider other)
+    //private void OnCollisionExit(Collision collision)
     //{
     //    Debug.Log("Player Left NPC");
     //    touching = false;
     //    clickText.enabled = false;
     //    clickBox.enabled = false;
     //}
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.tag == "Player")
+        {
+            touching = true;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        Debug.Log("Player Left NPC");
+        touching = false;
+        clickText.enabled = false;
+        clickBox.enabled = false;
+    }
 }

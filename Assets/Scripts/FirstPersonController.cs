@@ -11,6 +11,8 @@ public class FirstPersonController : MonoBehaviour
     public float mouseX;
     public float mouseY;
 
+    public float mouseMod;
+
     public float moveSpeed;
 
     public Vector3 inputVector;
@@ -34,9 +36,9 @@ public class FirstPersonController : MonoBehaviour
             mouseX = Input.GetAxis("Mouse X");
             mouseY = Input.GetAxis("Mouse Y");
 
-            transform.Rotate(0, mouseX, 0);
+            transform.Rotate(0, mouseX * mouseMod, 0);
 
-            Camera.main.transform.Rotate(-mouseY, 0, 0);
+            Camera.main.transform.Rotate(-mouseY * mouseMod, 0, 0);
 
             forwardBackward = Input.GetAxis("Vertical");
             rightLeft = Input.GetAxis("Horizontal");
