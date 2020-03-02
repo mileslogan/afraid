@@ -57,7 +57,7 @@ public class NPCScript : MonoBehaviour
         clickText = clickTextHolder.GetComponent<Text>();
 
 
-
+        touching = false;
     }
 
     // Update is called once per frame
@@ -128,13 +128,18 @@ public class NPCScript : MonoBehaviour
         {
             touching = true;
         }
+        Debug.Log(other.gameObject.name);
     }
 
     private void OnTriggerExit(Collider other)
     {
-        Debug.Log("Player Left NPC");
-        touching = false;
-        clickText.enabled = false;
-        clickBox.enabled = false;
+        if (other.tag == "Player")
+        {
+            Debug.Log("Player Left NPC");
+            touching = false;
+            clickText.enabled = false;
+            clickBox.enabled = false;
+        }
+        
     }
 }
