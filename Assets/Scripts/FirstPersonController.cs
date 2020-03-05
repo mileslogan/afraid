@@ -26,11 +26,17 @@ public class FirstPersonController : MonoBehaviour
     {
         thisCharacterController = GetComponent<CharacterController>();
         isTalking = false;
+        Cursor.visible = false;
     }
 
     // Update is called once per frame
     void Update()
     {
+        //cast four distinct raycasts
+        //set them at a distance that feels apropriate (4?)
+        //set up a boolean so if any of them are touching, they trigger NPC boolean
+        //if none are touching, no interaction
+
         if (!isTalking)
         {
             mouseX = Input.GetAxis("Mouse X");

@@ -26,6 +26,7 @@ public class NPCScript : MonoBehaviour
     GameObject clickTextHolder;
     Text clickText;
 
+    SpriteRenderer mainRender;
 
     GameObject playerCapsule;
     FirstPersonController playerScript;
@@ -56,6 +57,8 @@ public class NPCScript : MonoBehaviour
         clickTextHolder = GameObject.Find("ClickPrompt");
         clickText = clickTextHolder.GetComponent<Text>();
 
+        mainRender = GetComponent<SpriteRenderer>();
+
 
         touching = false;
     }
@@ -63,7 +66,8 @@ public class NPCScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (touching)
+
+        if (touching && mainRender.isVisible)
         {
             Debug.Log("Touching");
             if (!playerScript.isTalking)
@@ -101,6 +105,11 @@ public class NPCScript : MonoBehaviour
                     playerScript.isTalking = false;
                 }
             }
+        }
+        else if (touching && !mainRender.isVisible)
+        {
+            clickText.enabled = false;
+            clickBox.enabled = false;
         }
         
     }
